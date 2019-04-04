@@ -263,6 +263,9 @@ static NSTimeInterval const kDefaultLoadingTimeout = 15;
              loadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {
     NSString *requestRange = rangeFromRequest(request);
     NSString *responseRange = rangeFromResponse(response);
+    if (responseRange == nil) {
+        return nil;
+    }
 
     NSInteger requestFrom = [[[requestRange componentsSeparatedByString:@"-"] firstObject] integerValue];
     NSInteger requestTo = [[[requestRange componentsSeparatedByString:@"-"] lastObject] integerValue];
